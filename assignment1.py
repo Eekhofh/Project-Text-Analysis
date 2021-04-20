@@ -118,8 +118,8 @@ def main():
 	amount_chars, found_chars = char_types(text)
 	print(f'Amount of character types found: {amount_chars}\n{found_chars}\n')
 
-	top20_chartypes = top_char(text)
-	print(f'Top 20 most common uni, bi and trigram characters: \n{top20_chartypes}\n')
+	top20_chars = top_char(text)
+	print(f'Top 20 most common uni, bi and trigram characters: \n{top20_chars}\n')
 
 
 if __name__ == '__main__':
