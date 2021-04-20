@@ -87,6 +87,16 @@ def char_types(txt):
 	return len(sorted_dist), sorted_dist
 
 
+def token_types(txt):
+	token_list = []
+	words = nltk.word_tokenize(txt)
+	for word in words:
+		word = word.lower()
+		if word not in token_list:
+			token_list.append(word)
+	return len(token_list), sorted(token_list)
+
+
 def top_char(txt):
 	# Creates a list of the 20 most common character grams.
 	txt = txt.replace('\n', '').replace('\r', '')
@@ -98,6 +108,18 @@ def top_char(txt):
 	fdist = nltk.FreqDist(total_char)
 
 	return fdist.most_common(20)
+
+
+def top_token(txt):
+	txt = nltk.word_tokenize(txt)
+	uni_token = list(nltk.ngrams(txt, 1))
+	bi_token = list(nltk.ngrams(txt, 2))
+	tri_token = list(nltk.ngrams(txt, 3))
+	all_tokens = uni_token + bi_token + tri_token
+
+	most_freq = nltk.FreqDist(all_tokens)
+
+	return most_freq.most_common(20)
 
 
 def main():
@@ -121,9 +143,19 @@ def main():
 
 	amount_chars, found_chars = char_types(text)
 	print(f'Amount of character types found: {amount_chars}\n{found_chars}\n')
+	print()
+
+	amount_token_types, tokens = token_types(text)
+	print(f'Amount of token types found: {amount_token_types}\n{tokens}\n')
+	print()
 
 	top20_chars = top_char(text)
 	print(f'Top 20 most common uni, bi and trigram characters: \n{top20_chars}\n')
+	print()
+
+	top20_tokens = top_token(text)
+	print(f'Top 20 most common uni, bi and trigram tokens: \n{top20_tokens}\n')
+	print()
 
 
 if __name__ == '__main__':
