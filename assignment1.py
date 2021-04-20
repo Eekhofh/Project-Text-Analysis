@@ -2,6 +2,8 @@
 # Assignment 1 part 1
 # 20-04-2021
 
+# USAGE: in the command line, type 'python3 assignment1.py <text.txt>'
+
 
 import random
 import sys
