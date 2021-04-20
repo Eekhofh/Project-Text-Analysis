@@ -1,6 +1,10 @@
 # Project Text Analysis
-# Assignment 1 part 1
+# Assignment 1
 # 20-04-2021
+
+# Hessel Eekhof - S3398641
+# Joey Mallat - S4483081
+# Louis Speelman - S4364473
 
 # USAGE: in the command line, type 'python3 assignment1.py <text.txt>'
 
