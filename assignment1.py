@@ -115,8 +115,8 @@ def main():
 	print('Average sentence length: ' + str(average))
 	print()
 
-	amount_chartypes, total_chartypes = char_types(text)
-	print(f'Amount of character types found: {amount_chartypes}\n{total_chartypes}\n')
+	amount_chars, found_chars = char_types(text)
+	print(f'Amount of character types found: {amount_chars}\n{found_chars}\n')
 
 	top20_chartypes = top_char(text)
 	print(f'Top 20 most common uni, bi and trigram characters: \n{top20_chartypes}\n')
