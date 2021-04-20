@@ -77,7 +77,8 @@ def average_length(sentences):
 
 
 def char_types(txt):
-	# Character uni-grams
+	# Creates character unigrams
+	# And returns a list of them, together with the length
 	txt = txt.replace('\n', '').replace('\r', '')
 	token_char = nltk.ngrams(txt, 1)
 	type_char = set(token_char)
@@ -87,6 +88,7 @@ def char_types(txt):
 
 
 def top_char(txt):
+	# Creates a list of the 20 most common character grams.
 	txt = txt.replace('\n', '').replace('\r', '')
 	uni_char = list(nltk.ngrams(txt, 1))
 	bi_char = list(nltk.ngrams(txt, 2))
