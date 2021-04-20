@@ -9,15 +9,16 @@ import random
 import sys
 import re
 import nltk
+nltk.download(['punkt'])
 
 
-def split_sentences(text_file):
-	with open(text_file, 'r') as infile:
+def read_text(txt):
+	with open(txt, 'r') as infile:
 		lines = infile.read()
-	
-	sentences = nltk.sent_tokenize(lines)
-	return sentences
-		
+
+	tokenized_text = nltk.sent_tokenize(lines)
+	return lines, tokenized_text
+
 
 def longest_sentence(sentences):
 	
@@ -73,11 +74,32 @@ def average_length(sentences):
 		total_length += len(sent)
 	
 	return round(total_length / total_sentences, 2)
-		
+
+
+def char_types(txt):
+	# Character uni-grams
+	token_char = nltk.ngrams(txt, 1)
+	type_char = set(token_char)
+	sorted_dist = sorted(type_char, key=lambda item: item[0])
+
+	return len(sorted_dist), sorted_dist
+
+
+def top_char(txt):
+	uni_char = list(nltk.ngrams(txt, 1))
+	bi_char = list(nltk.ngrams(txt, 2))
+	tri_char = list(nltk.ngrams(txt, 3))
+	total_char = uni_char + bi_char + tri_char
+
+	fdist = nltk.FreqDist(total_char)
+
+	return fdist.most_common(20)
+
 
 def main():
-	sentences = split_sentences(sys.argv[1])
+	text, sentences = read_text(sys.argv[1])
 	longest_sent = longest_sentence(sentences)
+
 	print()
 	print('Longest sentence: ' + longest_sent)
 	print()
@@ -92,7 +114,13 @@ def main():
 	average = average_length(sentences)
 	print('Average sentence length: ' + str(average))
 	print()
-	
+
+	amount_chartypes, total_chartypes = char_types(text)
+	print(f'Amount of character types found: {amount_chartypes}\n{total_chartypes}\n')
+
+	top20_chartypes = top_char(text)
+	print(f'Top 20 most common uni, bi and trigram characters: \n{top20_chartypes}\n')
+
 
 if __name__ == '__main__':
 	main()
