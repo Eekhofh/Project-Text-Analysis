@@ -78,6 +78,7 @@ def average_length(sentences):
 
 def char_types(txt):
 	# Character uni-grams
+	txt = txt.replace('\n', '').replace('\r', '')
 	token_char = nltk.ngrams(txt, 1)
 	type_char = set(token_char)
 	sorted_dist = sorted(type_char, key=lambda item: item[0])
@@ -86,6 +87,7 @@ def char_types(txt):
 
 
 def top_char(txt):
+	txt = txt.replace('\n', '').replace('\r', '')
 	uni_char = list(nltk.ngrams(txt, 1))
 	bi_char = list(nltk.ngrams(txt, 2))
 	tri_char = list(nltk.ngrams(txt, 3))
