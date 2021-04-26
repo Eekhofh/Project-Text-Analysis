@@ -1,6 +1,11 @@
 import nltk
 from nltk.collocations import *
+from nltk.corpus import brown
+from nltk.tag import UnigramTagger
 import sys
+
+nltk.download('brown')
+nltk.download('averaged_perceptron_tagger')
 
 
 def coll_pmi(text_file):
@@ -92,6 +97,61 @@ def manual_pos():
 		''')
 
 
+def brownpos():
+	br_tw = nltk.corpus.brown.tagged_words(categories='mystery')
+	br_ts = nltk.corpus.brown.tagged_sents(categories='mystery')
+
+	print(f'Total words found: {len(br_tw)}')
+	print(f'Total sentences found: {len(br_ts)}\n')
+
+	print(f"The 50th word is {br_tw[49][0]} and it's: {br_tw[49][1]} (Adjective)")
+	print(f"The 75th word is {br_tw[74][0]} and it's: {br_tw[74][1]} (Preposition)\n")
+
+	counted_items = []
+	for word in br_tw:
+		if word[1] not in counted_items:
+			counted_items.append(word[1])
+
+	print(f'There are {len(counted_items)} different tags represented in the Brown Mystery category\n')
+	counted_items.clear()
+
+	brown_words = []
+	for word in br_tw:
+		brown_words.append(word[0])
+	freq_words = nltk.FreqDist(brown_words)
+	brown_words.clear()
+
+	brown_pos = []
+	for word in br_tw:
+		brown_pos.append(word[1])
+
+	freq_pos = nltk.FreqDist(brown_pos)
+	brown_pos.clear()
+
+	print('15 Most common words and their frequency')
+	print(freq_words.most_common()[:15])
+	print()
+	print('15 Most common POS and their frequency')
+	print(freq_pos.most_common()[:15])
+	print()
+
+	pos_sent1 = []
+	for word in br_ts[19]:
+		pos_sent1.append(word[1])
+
+	pos_sent2 = []
+	for word in br_ts[39]:
+		pos_sent2.append(word[1])
+
+	freq_sent1 = nltk.FreqDist(pos_sent1)
+	freq_sent2 = nltk.FreqDist(pos_sent2)
+	pos_sent1.clear()
+	pos_sent2.clear()
+
+	print(f'Most common POS in sentence 20: {freq_sent1.most_common(1)} (3rd. singular nominative pronoun)')
+	print(f'Most common POS in sentence 40: {freq_sent2.most_common(1)} (3rd. singular nominative pronoun)\n')
+
+
 def main():
 	pmiscores = coll_pmi(sys.argv[1])
 	print("20 most like collocations using Pointwise Mutual Information:\n")
@@ -104,6 +164,7 @@ def main():
 	print("Any differences might be explained by differences in the ways PMI and Chi-Sq. are calculated\n")
 	manual_pos()
 	print()
+	brownpos()
 	
 	
 if __name__ == "__main__":
