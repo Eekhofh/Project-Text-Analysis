@@ -216,7 +216,7 @@ def brownpos():
     so_qual = ('so', 'QL')
     so_sub = ('so', 'CS')
 
-    print('So Adjective Sentence')
+    print('So Adverb Sentence')
     for sentence in br_ts:
         if so_adj in sentence:
             new_sentence = ''
