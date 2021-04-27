@@ -35,6 +35,8 @@ def coll_chi(text_file):
 def manual_pos():
     print(
         '''
+        Exercise 2.1
+        
 		Penn Treebank POS tagset
 		Peter: NN
 		really: RB
@@ -98,6 +100,7 @@ def manual_pos():
 
 
 def brownpos():
+    print('Exercise 2.2\n')
     br_tw = nltk.corpus.brown.tagged_words(categories='mystery')
     br_ts = nltk.corpus.brown.tagged_sents(categories='mystery')
 
@@ -296,7 +299,6 @@ def brownpos():
 
     so_sub_freq_fol = nltk.FreqDist(so_sub_fol)
     print(so_sub_freq_fol.most_common(1)[0][0])
-
 
 
 def main():
