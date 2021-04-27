@@ -276,7 +276,7 @@ def brownpos():
 
             word_position += 1
 
-    print('\nMost likely POS preceding and following So as Adjective.')
+    print('\nMost likely POS preceding and following So as Adverb.')
     so_adj_freq_prev = nltk.FreqDist(so_adj_prev)
     print(so_adj_freq_prev.most_common(1)[0][0])
 

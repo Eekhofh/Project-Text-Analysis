@@ -1,0 +1,107 @@
+		Penn Treebank POS tagset
+		Peter: NN
+		really: RB
+		liked: VBD
+		the: DT
+		movies: NN
+		and: CC
+		warm: JJ
+		pop-corn: NN
+		He: PRP
+		would: VBD
+		never: RB
+		bring: VBD
+		Mira: NN
+		with: IN
+		him: PRP
+		though:
+
+		Brown Corpus Tagset
+		Peter: NN
+		really: RB
+		liked: VBD
+		the: AT
+		movies: NNS
+		and: CC
+		warm: JJ
+		pop-corn: NN
+		.: .
+		He: PPS
+		would: MD
+		never: RB
+		bring: VB
+		Mira: NN
+		with: IN
+		him: PPO
+		,: ,
+		though: RB
+		.: .
+
+		NLTK Universal Tagset
+		Peter: NOUN
+		really: ADV
+		liked: VERB
+		the: DET
+		movies: NOUN
+		and: CONJ
+		warm: ADJ
+		pop-corn: NOUN
+		.: .
+		He: NOUN
+		would: VERB
+		never: ADV
+		bring: VERB
+		Mira: NOUN
+		with: ADP
+		him: NOUN
+		,: .
+		though: ADJ
+		.: .
+
+
+Total words found: 57169
+Total sentences found: 3886
+
+The 50th word is grim and it's: JJ (Adjective)
+The 75th word is from and it's: IN (Preposition)
+
+There are 169 different tags represented in the Brown Mystery category
+
+15 Most common words and their frequency
+[('.', 3326), (',', 2805), ('the', 2573), ('to', 1284), ('and', 1215), ('a', 1136), ('of', 903), ('was', 820), ('``', 740), ("''", 738), ('he', 670), ('?', 664), ('in', 658), ('I', 583), ('his', 529)]
+
+15 Most common POS and their frequency
+[('NN', 6461), ('IN', 4692), ('.', 4322), ('AT', 4321), (',', 2805), ('VBD', 2645), ('RB', 2459), ('JJ', 2109), ('VB', 2026), ('PPS', 1767), ('NP', 1737), ('CC', 1692), ('NNS', 1435), ('PPO', 1207), ('VBN', 1161)]
+
+Most common POS in sentence 20: [('PPSS+BER', 1)] (3rd. singular nominative pronoun)
+Most common POS in sentence 40: [('PPSS', 1)] (3rd. singular nominative pronoun)
+
+Most common Adverb is: [('back', 238)]
+Most common Adjective is: [('old', 116)]
+
+The most common POS tags for so are: {'RB', 'QL', 'CS'}
+(Adverb, Qualifier and Subordinating Conjunction)
+
+Most common POS tag for so is: [('RB', 96)]
+
+So Adverb Sentence
+ I'll bet he wouldn't be pleased if a rumdum like me were to ask his daughter for a date -- I mean , after I'm out of the hospital , a month or so from now '' .
+
+So Qualifier Sentence
+ We've always been so close '' .
+
+So Subordinating Conjunction Sentence
+ I put in new batteries so as to be certain I'd have plenty of power and on my way out walked over to the regular parking stalls and stood looking at them thoughtfully .
+
+
+Most likely POS preceding and following So as Adverb.
+CC (Coordinating Conjunction)
+. (. ; ? or *)
+
+Most likely POS preceding and following So as Qualifier.
+IN (Preposition)
+JJ (Adjective)
+
+Most likely POS preceding and following So as Subordinating Conjunction.
+, (Comma)
+CS (Subordinating Conjunction)
