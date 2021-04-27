@@ -212,7 +212,92 @@ def brownpos():
     print(f'Most common POS tag for so is: {freq_so.most_common(1)}\n')
 
     # Exercise 2.2k
-   
+    so_adj = ('so', 'RB')
+    so_qual = ('so', 'QL')
+    so_sub = ('so', 'CS')
+
+    print('So Adjective Sentence')
+    for sentence in br_ts:
+        if so_adj in sentence:
+            new_sentence = ''
+            for word in sentence:
+                new_sentence += (' ' + word[0])
+            print(new_sentence)
+            break
+
+    print('\nSo Qualifier Sentence')
+    for sentence in br_ts:
+        if so_qual in sentence:
+            new_sentence = ''
+            for word in sentence:
+                new_sentence += (' ' + word[0])
+            print(new_sentence)
+            break
+
+    print('\nSo Subordinating Conjunction Sentence')
+    for sentence in br_ts:
+        if so_sub in sentence:
+            new_sentence = ''
+            for word in sentence:
+                new_sentence += (' ' + word[0])
+            print(new_sentence)
+            break
+
+    print()
+    # Exercise 2.2l
+    so_adj_prev = []
+    so_adj_fol = []
+
+    so_qual_prev = []
+    so_qual_fol = []
+
+    so_sub_prev = []
+    so_sub_fol = []
+    for sentence in br_ts:
+        word_position = 0
+        for word in sentence:
+            if word[0] == 'so' and word[1] == 'RB':
+                prev_word = sentence[word_position - 1]
+                fol_word = sentence[word_position + 1]
+                so_adj_prev.append(prev_word[1])
+                so_adj_fol.append(fol_word[1])
+
+            elif word[0] == 'so' and word[1] == 'QL':
+                prev_word = sentence[word_position - 1]
+                fol_word = sentence[word_position + 1]
+                so_qual_prev.append(prev_word[1])
+                so_qual_fol.append(fol_word[1])
+
+            elif word[0] == 'so' and word[1] == 'CS':
+                prev_word = sentence[word_position - 1]
+                fol_word = sentence[word_position + 1]
+                so_sub_prev.append(prev_word[1])
+                so_sub_fol.append(fol_word[1])
+
+            word_position += 1
+
+    print('\nMost likely POS preceding and following So as Adjective.')
+    so_adj_freq_prev = nltk.FreqDist(so_adj_prev)
+    print(so_adj_freq_prev.most_common(1)[0][0])
+
+    so_adj_freq_fol = nltk.FreqDist(so_adj_fol)
+    print(so_adj_freq_fol.most_common(1)[0][0])
+
+    print('\nMost likely POS preceding and following So as Qualifier.')
+    so_qual_freq_prev = nltk.FreqDist(so_qual_prev)
+    print(so_qual_freq_prev.most_common(1)[0][0])
+
+    so_qual_freq_fol = nltk.FreqDist(so_qual_fol)
+    print(so_qual_freq_fol.most_common(1)[0][0])
+
+    print('\nMost likely POS preceding and following So as Subordinating Conjunction.')
+    so_sub_freq_prev = nltk.FreqDist(so_sub_prev)
+    print(so_sub_freq_prev.most_common(1)[0][0])
+
+    so_sub_freq_fol = nltk.FreqDist(so_sub_fol)
+    print(so_sub_freq_fol.most_common(1)[0][0])
+
+
 
 def main():
     pmiscores = coll_pmi(sys.argv[1])
