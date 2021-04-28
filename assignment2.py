@@ -1,3 +1,14 @@
+# Project Text Analysis
+# Assignment 2
+# 28-04-2021
+
+# Hessel Eekhof - S3398641
+# Joey Mallat - S4483081
+# Louis Speelman - S4364473
+
+# USAGE: in the command line, type 'python3 assignment2.py <text.txt>'
+
+
 import nltk
 from nltk.collocations import *
 from nltk.corpus import brown
