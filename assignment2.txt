@@ -1,63 +1,78 @@
-		Penn Treebank POS tagset
-		Peter: NN
-		really: RB
-		liked: VBD
-		the: DT
-		movies: NN
-		and: CC
-		warm: JJ
-		pop-corn: NN
-		He: PRP
-		would: VBD
-		never: RB
-		bring: VBD
-		Mira: NN
-		with: IN
-		him: PRP
-		though:
+20 most like collocations using Pointwise Mutual Information:
 
-		Brown Corpus Tagset
-		Peter: NN
-		really: RB
-		liked: VBD
-		the: AT
-		movies: NNS
-		and: CC
-		warm: JJ
-		pop-corn: NN
-		.: .
-		He: PPS
-		would: MD
-		never: RB
-		bring: VB
-		Mira: NN
-		with: IN
-		him: PPO
-		,: ,
-		though: RB
-		.: .
+[(('1', '/'), 16.939636601437098), (('31', 'Lyon'), 16.939636601437098), (('ARTHUR', 'CONAN'), 16.939636601437098), (('Alicia', 'Whittington'), 16.939636601437098), (('Amateur', 'Mendicant'), 16.939636601437098), (('Amoy', 'River'), 16.939636601437098), (('Anderson', '",'), 16.939636601437098), (('Apache', 'Indians'), 16.939636601437098), (('Arabian', 'Nights'), 16.939636601437098), (('Arnsworth', 'Castle'), 16.939636601437098), (('Atkinson', 'brothers'), 16.939636601437098), (('BERYL', 'CORONET'), 16.939636601437098), (('BLUE', 'CARBUNCLE'), 16.939636601437098), (('BOSCOMBE', 'VALLEY'), 16.939636601437098), (('Bengal', 'Artillery'), 16.939636601437098), (('Bermuda', 'Dockyard'), 16.939636601437098), (('Blue', 'Carbuncle'), 16.939636601437098), (('Botany', 'variable'), 16.939636601437098), (('CONAN', 'DOYLE'), 16.939636601437098)]
 
-		NLTK Universal Tagset
-		Peter: NOUN
-		really: ADV
-		liked: VERB
-		the: DET
-		movies: NOUN
-		and: CONJ
-		warm: ADJ
-		pop-corn: NOUN
-		.: .
-		He: NOUN
-		would: VERB
-		never: ADV
-		bring: VERB
-		Mira: NOUN
-		with: ADP
-		him: NOUN
-		,: .
-		though: ADJ
-		.: .
+20 most like collocations using Chi-Squared:
 
+[(('1', '/'), 125701.0), (('31', 'Lyon'), 125701.0), (('ARTHUR', 'CONAN'), 125701.0), (('Alicia', 'Whittington'), 125701.0), (('Amateur', 'Mendicant'), 125701.0), (('Amoy', 'River'), 125701.0), (('Anderson', '",'), 125701.0), (('Apache', 'Indians'), 125701.0), (('Arabian', 'Nights'), 125701.0), (('Arnsworth', 'Castle'), 125701.0), (('Atkinson', 'brothers'), 125701.0), (('BERYL', 'CORONET'), 125701.0), (('BLUE', 'CARBUNCLE'), 125701.0), (('BOSCOMBE', 'VALLEY'), 125701.0), (('Bengal', 'Artillery'), 125701.0), (('Bermuda', 'Dockyard'), 125701.0), (('Beryl', 'Coronet'), 125701.0), (('Blue', 'Carbuncle'), 125701.0), (('Botany', 'variable'), 125701.0)]
+
+Any differences might be explained by differences in the ways PMI and Chi-Sq. are calculated
+
+
+        Exercise 2.1
+
+                Penn Treebank POS tagset
+                Peter: NN
+                really: RB
+                liked: VBD
+                the: DT
+                movies: NN
+                and: CC
+                warm: JJ
+                pop-corn: NN
+                He: PRP
+                would: VBD
+                never: RB
+                bring: VBD
+                Mira: NN
+                with: IN
+                him: PRP
+                though:
+
+                Brown Corpus Tagset
+                Peter: NN
+                really: RB
+                liked: VBD
+                the: AT
+                movies: NNS
+                and: CC
+                warm: JJ
+                pop-corn: NN
+                .: .
+                He: PPS
+                would: MD
+                never: RB
+                bring: VB
+                Mira: NN
+                with: IN
+                him: PPO
+                ,: ,
+                though: RB
+                .: .
+
+                NLTK Universal Tagset
+                Peter: NOUN
+                really: ADV
+                liked: VERB
+                the: DET
+                movies: NOUN
+                and: CONJ
+                warm: ADJ
+                pop-corn: NOUN
+                .: .
+                He: NOUN
+                would: VERB
+                never: ADV
+                bring: VERB
+                Mira: NOUN
+                with: ADP
+                him: NOUN
+                ,: .
+                though: ADJ
+                .: .
+
+
+Exercise 2.2
 
 Total words found: 57169
 Total sentences found: 3886
@@ -80,7 +95,7 @@ Most common Adverb is: [('back', 238)]
 Most common Adjective is: [('old', 116)]
 
 The most common POS tags for so are: {'RB', 'QL', 'CS'}
-(Adverb, Qualifier and Subordinating Conjunction)
+(Adjective, Qualifier and Subordinating Conjunction)
 
 Most common POS tag for so is: [('RB', 96)]
 
@@ -95,13 +110,22 @@ So Subordinating Conjunction Sentence
 
 
 Most likely POS preceding and following So as Adverb.
-CC (Coordinating Conjunction)
-. (. ; ? or *)
+CC
+.
 
 Most likely POS preceding and following So as Qualifier.
-IN (Preposition)
-JJ (Adjective)
+IN
+JJ
 
 Most likely POS preceding and following So as Subordinating Conjunction.
-, (Comma)
-CS (Subordinating Conjunction)
+,
+CS
+
+(Next assignment is cut off at 100 POS tags, to not clutter the screen.)
+[('THE', 'DT'), ('ADVENTURES', 'NNP'), ('OF', 'NNP'), ('SHERLOCK', 'NNP'), ('HOLMES', 'NNP'), ('by', 'IN'), ('SIR', 'NNP'), ('ARTHUR', 'NNP'), ('CONAN', 'NNP'), ('DOYLE', 'NNP'), ('I', 'PRP'), ('.', '.'), ('A', 'DT'), ('Scandal', 'NNP'), ('in', 'IN'), ('Bohemia', 'NNP'), ('II', 'NNP'), ('.', '.'), ('The', 'DT'), ('Red-headed', 'JJ'), ('League', 'NNP'), ('III', 'NNP'), ('.', '.'), ('A', 'DT'), ('Case', 'NN'), ('of', 'IN'), ('Identity', 'NNP'), ('IV', 'NNP'), ('.', '.'), ('The', 'DT'), ('Boscombe', 'NNP'), ('Valley', 'NNP'), ('Mystery', 'NNP'), ('V.', 'NNP'), ('The', 'DT'), ('Five', 'NNP'), ('Orange', 'NNP'), ('Pips', 'NNP'), ('VI', 'NNP'), ('.', '.'), ('The', 'DT'), ('Man', 'NN'), ('with', 'IN'), ('the', 'DT'), ('Twisted', 'NNP'), ('Lip', 'NNP'), ('VII', 'NNP'), ('.', '.'), ('The', 'DT'), ('Adventure', 'NN'), ('of', 'IN'), ('the', 'DT'), ('Blue', 'NNP'), ('Carbuncle', 'NNP'), ('VIII', 'NNP'), ('.', '.'), ('The', 'DT'), ('Adventure', 'NN'), ('of', 'IN'), ('the', 'DT'), ('Speckled', 'NNP'), ('Band', 'NNP'), ('IX', 'NNP'), ('.', '.'), ('The', 'DT'), ('Adventure', 'NN'), ('of', 'IN'), ('the', 'DT'), ('Engineer', 'NNP'), ("'s", 'POS'), ('Thumb', 'NNP'), ('X', 'NNP'), ('.', '.'), ('The', 'DT'), ('Adventure', 'NN'), ('of', 'IN'), ('the', 'DT'), ('Noble', 'NNP'), ('Bachelor', 'NNP'), ('XI', 'NNP'), ('.', '.'), ('The', 'DT'), ('Adventure', 'NN'), ('of', 'IN'), ('the', 'DT'), ('Beryl', 'NNP'), ('Coronet', 'NNP'), ('XII', 'NNP'), ('.', '.'), ('The', 'DT'), ('Adventure', 'NN'), ('of', 'IN'), ('the', 'DT'), ('Copper', 'NNP'), ('Beeches', 'NNP'), ('ADVENTURE', 'NNP'), ('I', 'PRP'), ('.', '.'), ('A', 'DT'), ('SCANDAL', 'NNP')]
+
+Top 5 POS collocations, using Chi-Squared: (Using PMI, the list is the same)
+[(("'87", 'POS'), ('furnished', 'VBD')), (("'DEAR", 'JJ'), ('MISS', 'NNP')), (("'MY", 'POS'), ('DEAREST', 'NNP')), (("'Omne", 'CC'), ('ignotum', 'JJ')), (("'Pink", 'NNP'), ("'un'", 'MD'))]
+All these bigrams all occur a maximum of 1 times next to each other in holmes.txt
+Not one bigram is the same.
+/

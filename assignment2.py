@@ -300,6 +300,22 @@ def brownpos():
     so_sub_freq_fol = nltk.FreqDist(so_sub_fol)
     print(so_sub_freq_fol.most_common(1)[0][0])
 
+def manual_pos_tag(text_file):
+    with open(text_file, 'r') as infile:
+        text = infile.read()
+
+    text = nltk.word_tokenize(text)
+    tagged_text = nltk.pos_tag(text)
+    return tagged_text
+
+def collocations(text_file):
+    text = manual_pos_tag(text_file)
+    #text = nltk.Text(text)
+    #print(text.collocations())
+    bigram_measures = nltk.collocations.BigramAssocMeasures()
+    finder = BigramCollocationFinder.from_words(text)
+    return finder.nbest(bigram_measures.chi_sq, 5)
+
 
 def main():
     pmiscores = coll_pmi(sys.argv[1])
@@ -314,6 +330,15 @@ def main():
     manual_pos()
     print()
     brownpos()
+    print()
+    print('(Next assignment is cut off at 100 POS tags, to not clutter the screen.)')
+    print(manual_pos_tag(sys.argv[1])[0:100])
+    print()
+    print('Top 5 POS collocations, using Chi-Squared: (Using PMI, the list is the same)')
+    print(collocations(sys.argv[1]))
+    print('All these bigrams all occur a maximum of 1 times next to each other in holmes.txt')
+    print('Not one bigram is the same.')
+    print('/')
 
 
 if __name__ == "__main__":
