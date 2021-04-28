@@ -338,7 +338,7 @@ def main():
     print(collocations(sys.argv[1]))
     print('All these bigrams all occur a maximum of 1 times next to each other in holmes.txt')
     print('Not one bigram is the same.')
-    print('/')
+    print('Collocations are useful because it allows you to make more fluent sentences with larger chunks of words, using machine learning.')
 
 
 if __name__ == "__main__":

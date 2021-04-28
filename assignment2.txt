@@ -128,4 +128,4 @@ Top 5 POS collocations, using Chi-Squared: (Using PMI, the list is the same)
 [(("'87", 'POS'), ('furnished', 'VBD')), (("'DEAR", 'JJ'), ('MISS', 'NNP')), (("'MY", 'POS'), ('DEAREST', 'NNP')), (("'Omne", 'CC'), ('ignotum', 'JJ')), (("'Pink", 'NNP'), ("'un'", 'MD'))]
 All these bigrams all occur a maximum of 1 times next to each other in holmes.txt
 Not one bigram is the same.
-/
+Collocations are useful because it allows you to make more fluent sentences with larger chunks of words, using machine learning.
