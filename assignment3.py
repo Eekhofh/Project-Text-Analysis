@@ -1,6 +1,10 @@
 from nltk.corpus import wordnet as wn
+from nltk.parse import CoreNLPParser
+from nltk import download
 import sys
 import re
+
+download('wordnet')
 
 def hypernymOf(synset1, synset2):
 	if synset1 == synset2:
@@ -43,7 +47,20 @@ def question1(text_file):
 	return relatives, relatives_words, illnesses, illnesses_words, sciences, sciences_words
 
 
+def ner_wordnet(text_file):
+	with open(text_file, 'r') as infile:
+		text = infile.read()
+		tagger = CoreNLPParser(url='http://localhost:9000', tagtype='ner')
+		print(list(tagger.tag(text.split())))
+		# In exercise 2.1, not all Tags are correct. King is not an organization!
+		# In exercise 2.2, the 4 tag class model is almost the same as the 3 class model.
+		# So I have chosen to use the 7 class model, since it correctly classifies the word 'King' as Person.
+
+
+
+
 def main():
+	text = sys.argv[1]
 	data1 = question1(sys.argv[1])
 	print("Question 1")
 	print(str(data1[0]) + " word(s) refer to a relative")
@@ -52,6 +69,9 @@ def main():
 	print("These words are: " + ", ".join(data1[3]))
 	print(str(data1[4]) + " word(s) refer to a science")
 	print("These words are: " + ", ".join(data1[5]))
+	print('Exercise 2')
+	# Do not run without server!
+	ner_wordnet(text)
 	
 
 if __name__ == '__main__':
