@@ -1,10 +1,14 @@
 from nltk.corpus import wordnet as wn
 from nltk.parse import CoreNLPParser
-from nltk import download
+from nltk import download, word_tokenize, pos_tag, sent_tokenize, ne_chunk
 import sys
 import re
 
 download('wordnet')
+download('maxent_ne_chunker')
+download('words')
+
+
 
 def hypernymOf(synset1, synset2):
 	if synset1 == synset2:
@@ -51,11 +55,15 @@ def ner_wordnet(text_file):
 	with open(text_file, 'r') as infile:
 		text = infile.read()
 		tagger = CoreNLPParser(url='http://localhost:9000', tagtype='ner')
+		print('Exercise 2.1')
 		print(list(tagger.tag(text.split())))
 		# In exercise 2.1, not all Tags are correct. King is not an organization!
 		# In exercise 2.2, the 4 tag class model is almost the same as the 3 class model.
 		# So I have chosen to use the 7 class model, since it correctly classifies the word 'King' as Person.
-
+		text_tokens = word_tokenize(text)
+		text_sents = sent_tokenize(text)
+		pos_text = pos_tag(text_tokens)
+		print(ne_chunk(pos_text))
 
 
 
