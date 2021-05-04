@@ -79,7 +79,7 @@ def main():
 	print("These words are: " + ", ".join(data1[5]))
 	print('Exercise 2')
 	# Do not run without server!
-	ner_wordnet(text)
+	#ner_wordnet(text)
 	
 
 if __name__ == '__main__':
