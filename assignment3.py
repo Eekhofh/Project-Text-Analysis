@@ -86,60 +86,7 @@ def question2(text_file):
 	return noun_dict, class_dict
 
 
-def ner_wordnet(text_file):
-	with open(text_file, 'r') as infile:
-		text = infile.read()
-		tagger = CoreNLPParser(url='http://localhost:9000', tagtype='ner')
-		print('Exercise 2.1')
-		tagged_text = list(tagger.tag(text.split()))
-		print(tagged_text)
-		# In exercise 2.1, not all Tags are correct. King is not an organization!
-		# In exercise 2.2, the 4 tag class model is almost the same as the 3 class model.
-		# So I have chosen to use the 7 class model, since it correctly classifies the word 'King' as Person.
 
-		text_tokens = word_tokenize(text)
-		pos_tokens = pos_tag(text_tokens)
-		nouns = []
-		type_nouns = ['NN', 'NNS', 'NNP', 'NNPS']
-		tags = ['PERSON',  'ORGANIZATION', 'GPE', 'LOCATION', 'DATE']
-
-		for pos_token in pos_tokens:
-			if pos_token[1] in type_nouns:
-				nouns.append(pos_token[0])
-
-		chunks_tree = ne_chunk(pos_tokens)
-
-		tagged_nouns = []
-
-		for chunk in chunks_tree:
-			if type(chunk) == nltk.tree.Tree:
-				tag = chunk.label()
-				tag_string = ''
-				if len(chunk.leaves()) > 1:
-					for leave in chunk.leaves():
-						if tag_string == '':
-							tag_string += leave[0]
-						else:
-							tag_string = tag_string + ' ' + leave[0]
-				else:
-					tag_string = chunk.leaves()[0][0]
-
-				complete_tag = (tag_string, tag)
-				tagged_nouns.append(complete_tag)
-
-		for tagged_word in tagged_text:
-			if tagged_word[0] in nouns and not tagged_word[1] == 'O':
-				in_text = False
-				for tagged_noun in tagged_nouns:
-					if tagged_word[0] in tagged_noun[0]:
-						print(tagged_word[0])
-						in_text = True
-						break
-
-				if not in_text:
-					tagged_nouns.append(tagged_word)
-
-		print(f'Exercise 2.3\nAll tagged nouns: \n{tagged_nouns}')
 
 def wordnet_similarity(text_file):
 	ranking = {}
@@ -162,6 +109,62 @@ def wordnet_similarity(text_file):
 		print(pair, score)
 	print('The biggest difference between the two rankings is the switch between the medium-level similarity and the low-level similarity.')
 	print('The top level remains the same by a large difference in score.')
+
+
+def ner_wordnet(text_file):
+	with open(text_file, 'r') as infile:
+		text = infile.read()
+		tagger = CoreNLPParser(url='http://localhost:9000', tagtype='ner')
+		print('Exercise 2.1')
+		tagged_text = list(tagger.tag(text.split()))
+		print(tagged_text)
+		# In exercise 2.1, not all Tags are correct. King is not an organization!
+		# In exercise 2.2, the 4 tag class model is almost the same as the 3 class model.
+		# So I have chosen to use the 7 class model, since it correctly classifies the word 'King' as Person.
+
+		text_tokens = word_tokenize(text)
+		pos_tokens = pos_tag(text_tokens)
+		nouns = []
+		type_nouns = ['NN', 'NNS', 'NNP', 'NNPS']
+
+		for pos_token in pos_tokens:
+			if pos_token[1] in type_nouns:
+				nouns.append(pos_token[0])
+
+		chunks_tree = ne_chunk(pos_tokens)
+
+		tagged_nouns = []
+
+		# Get tagged chunks
+		for chunk in chunks_tree:
+			if type(chunk) == nltk.tree.Tree:
+				tag = chunk.label()
+				tag_string = ''
+				if len(chunk.leaves()) > 1:
+					for leave in chunk.leaves():
+						if tag_string == '':
+							tag_string += leave[0]
+						else:
+							tag_string = tag_string + ' ' + leave[0]
+				else:
+					tag_string = chunk.leaves()[0][0]
+
+				complete_tag = (tag_string, tag)
+				tagged_nouns.append(complete_tag)
+
+		# Get tagged words and merge them with the chunks
+		for tagged_word in tagged_text:
+			if tagged_word[0] in nouns and not tagged_word[1] == 'O':
+				in_text = False
+				for tagged_noun in tagged_nouns:
+					if tagged_word[0] in tagged_noun[0]:
+						in_text = True
+						break
+
+				if not in_text:
+					tagged_nouns.append(tagged_word)
+
+		print(f'Exercise 2.3\nAll tagged nouns: \n{tagged_nouns}')
 
 
 def main():
@@ -216,12 +219,13 @@ def main():
 		total_hypernyms += hypernym_count[noun]
 	hypernym_average = total_hypernyms / len(hypernym_count)
 	print("The average amount of hypernyms per noun type is " + str(hypernym_average))
-	# Do not run without server!
-	#ner_wordnet(text)
+
 	print()
 	print('Exercise 1.3')
 	print()
 	wordnet_similarity(sys.argv[1])
+	# Do not run without server!
+	ner_wordnet(text)
 
 
 if __name__ == '__main__':
