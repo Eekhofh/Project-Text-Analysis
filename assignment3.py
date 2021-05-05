@@ -135,6 +135,7 @@ def main():
 	print(str(data1[4]) + " word(s) refer to a science")
 	print("These words are: " + ", ".join(data1[5]))
 	print('Exercise 1.2')
+	print()
 	hypernym_count = question2(sys.argv[1])[0]
 	hypernyms = question2(sys.argv[1])[1] 
 	one_hypernym = 0
