@@ -51,6 +51,39 @@ def question1(text_file):
 	return relatives, relatives_words, illnesses, illnesses_words, sciences, sciences_words
 
 
+def question2(text_file):
+	top_hypernyms = ['act', 'animal', 'artifact', 'attribute', 'body', 'cognition', 'communication', 'event', 'feeling', 'food', 'group', 'location', 'motive', 'natural object', 'natural phenomenon', 'person', 'plant', 'possession', 'process', 'quantity', 'relation', 'shape', 'state', 'substance', 'time']
+	class_dict = {}
+	with open(text_file, 'r') as infile:
+		fl = infile.read()	
+	words = re.sub('[.,;:!?\'")(]+', r'', fl.lower())
+	words = re.sub('[\n]+', r' ', words)
+	nouns = [word for word, pos in pos_tag(word_tokenize(words)) if pos == 'NN']
+	for hypernym in top_hypernyms:
+		for noun in nouns:
+			if noun != 'ada':
+				try:
+					noun_synset = wn.synsets(noun)[0]
+					if hypernymOf(noun_synset, wn.synsets(hypernym)[0]):
+						if hypernym in class_dict:
+							if noun not in class_dict[hypernym]:
+								class_dict[hypernym].append(noun)
+						else:
+							class_dict[hypernym] = [noun]
+				except IndexError:
+					continue
+	
+	noun_dict = {}
+	for noun_list in class_dict.values():
+		for noun in noun_list:
+			if noun in noun_dict:
+				noun_dict[noun] += 1
+			else:
+				noun_dict[noun] = 1
+	
+	return noun_dict, class_dict
+
+
 def ner_wordnet(text_file):
 	with open(text_file, 'r') as infile:
 		text = infile.read()
@@ -101,6 +134,45 @@ def main():
 	print(str(data1[4]) + " word(s) refer to a science")
 	print("These words are: " + ", ".join(data1[5]))
 	print('Exercise 1.2')
+	hypernym_count = question2(sys.argv[1])[0]
+	hypernyms = question2(sys.argv[1])[1] 
+	one_hypernym = 0
+	one_hypernym_nouns = []
+	more_hypernyms = 0
+	more_hypernym_nouns = []
+	
+	for noun in hypernym_count:
+		if hypernym_count[noun] == 1:
+			one_hypernym += 1
+			one_hypernym_nouns.append(noun)
+		else:
+			more_hypernyms += 1
+			more_hypernym_nouns.append(noun)
+	
+	one_hypernym_noun = one_hypernym_nouns[randrange(len(one_hypernym_nouns))]
+	more_hypernym_noun = more_hypernym_nouns[randrange(len(more_hypernym_nouns))]
+	
+	one_hypernym_hypernyms = ""
+	for h in hypernyms:
+		if one_hypernym_noun in hypernyms[h]:
+			one_hypernym_hypernyms += h
+	
+	more_hypernym_hypernyms = []
+	for h in hypernyms:
+		if more_hypernym_noun in hypernyms[h]:
+			more_hypernym_hypernyms.append(h)
+	
+	print()
+	print("NOTE: in the following answers, types (not tokens) were used")
+	print("In " + str(one_hypernym) + " case(s), the noun was classified in only 1 hypernym")
+	print("One of these nouns is '" + one_hypernym_noun + "', which belongs to the hypernym '" + one_hypernym_hypernyms + "'")
+	print("In " + str(more_hypernyms) + " case(s), the noun was classified in more than 1 hypernym")
+	print("One of these nouns is '" + more_hypernym_noun + "', which belongs to the hypernyms '" + "', '".join(more_hypernym_hypernyms) + "'")
+	total_hypernyms = 0
+	for noun in hypernym_count:
+		total_hypernyms += hypernym_count[noun]
+	hypernym_average = total_hypernyms / len(hypernym_count)
+	print("The average amount of hypernyms per noun type is " + str(hypernym_average))
 	# Do not run without server!
 	#ner_wordnet(text)
 	print()
