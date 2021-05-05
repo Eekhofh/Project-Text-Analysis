@@ -9,6 +9,8 @@ download('words')
 
 
 def ner_wordnet(text_file):
+	# Server is required to run this
+
 	with open(text_file, 'r') as infile:
 		text = infile.read()
 		tagger = CoreNLPParser(url='http://localhost:9000', tagtype='ner')
@@ -67,6 +69,7 @@ def ner_wordnet(text_file):
 def main():
 	text = sys.argv[1]
 	ner_wordnet(text)
+
 
 if __name__ == '__main__':
 	main()
