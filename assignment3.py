@@ -3,6 +3,7 @@ from nltk.parse import CoreNLPParser
 from nltk import download, word_tokenize, pos_tag, sent_tokenize, ne_chunk
 import sys
 import re
+from random import randrange
 
 download('wordnet')
 download('maxent_ne_chunker')
