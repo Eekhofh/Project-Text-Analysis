@@ -47,7 +47,5 @@ def main():
 			add_tags(tagged_text, path)
 
 
-
-
 if __name__ == '__main__':
 	main()
