@@ -5,9 +5,9 @@ disagreements = {}
 
 for pdir in os.listdir('data/Hessel/group15'):
 	for ddir in os.listdir(f'data/Hessel/group15/{pdir}'):
-		annotator1 = f'data/Hessel/group15/{pdir}/{ddir}/en.tok.off.pos'
-		annotator2 = f'data/JoeyAnnotations/group15/{pdir}/{ddir}/en.tok.off.pos'
-		annotator3 = f'data/LouisAnnotations/group15/{pdir}/{ddir}/en.tok.off.pos'
+		annotator1 = f'goldStandard/Hessel/group15/{pdir}/{ddir}/en.tok.off.pos'
+		annotator2 = f'goldStandard/JoeyAnnotations/group15/{pdir}/{ddir}/en.tok.off.pos'
+		annotator3 = f'goldStandard/LouisAnnotations/group15/{pdir}/{ddir}/en.tok.off.pos'
 
 		annotator1_file = open(annotator1, 'r')
 		annotations1 = annotator1_file.readlines()
