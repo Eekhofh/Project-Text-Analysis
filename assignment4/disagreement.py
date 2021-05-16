@@ -45,4 +45,4 @@ for pdir in os.listdir('data/Hessel/group15'):
 
 with open('disagreements.txt', 'w+') as disagree_file:
 	for key in disagreements:
-		disagree_file.write(str(disagreements[key]) + '\n')
+		disagree_file.write(str(key) + str(disagreements[key]) + '\n')
