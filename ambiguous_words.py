@@ -5,6 +5,7 @@ from nltk import sent_tokenize
 import wikipedia
 import random
 
+
 def get_wiki(subject):
 	page = wikipedia.page(subject)
 	return sent_tokenize(page.content)
@@ -21,29 +22,23 @@ def find_ambiguous(sentence):
 	ambiguous_words = []
 	total_senses = 0
 	word_sense = []
-	total_definitions = []
+
 	for word in sent:
 		definitions = []
-		complete_definitions = []
+		senses = []
 		for ss in wordnet.synsets(word, 'n'):
 			definitions.append(ss.definition)
-			complete_definitions.append(ss.definition())
-			total_definitions.extend(complete_definitions)
+			senses.append(ss.definition())
 
 		if len(definitions) > 1:
 			ambiguous_words.append(word)
 
 			total_senses += len(definitions)
-		word_sense.append((word, total_definitions))
-	return ambiguous_words, total_senses, total_definitions, word_sense
+		if len(definitions) > 0:
+			word_sense.append((word, senses))
 
+	return ambiguous_words, total_senses, word_sense
 
-def pick_random(amount, words):
-	random_words = []
-	for i in range(amount):
-		word, senses = random.choice(list(words.items()))
-		random_words.append((word, senses))
-	return random_words
 
 
 def main():
@@ -51,26 +46,32 @@ def main():
 	total_ambiguous_words = 0
 	pages = ["Mathematics", "Call of Duty", "Soccer"]
 	found_words = {}
+	random_ambiguous_list = []
+	total_ambiguous_def = []
 	for page in pages:
 		ambiguous_words_definitions = []
 		sentences = get_wiki(page)
 		for sent in sentences:
-			ambiguous_words, senses, found_definitions, found_word_senses = find_ambiguous(sent)
+			ambiguous_words, senses, found_word_senses = find_ambiguous(sent)
 			total_ambiguous_words += len(ambiguous_words)
 			total_senses += senses
 
 			for found_word_sense in found_word_senses:
 				if found_word_sense[0] not in found_words:
+
 					found_words[found_word_sense[0].lower()] = found_word_sense[1]
 
 				else:
 					found_words[found_word_sense[0].lower()].extend(found_word_sense[1])
 
-
-
 			for word in ambiguous_words:
 				definition = disambiguation(sent, word, 'n')
 				ambiguous_words_definitions.append(definition)
+				total_ambiguous_def.append((definition, sent))
+
+	for i in range(7):
+		index = random.randint(0, len(total_ambiguous_def) - 1)
+		random_ambiguous_list.append(total_ambiguous_def[index])
 
 	print("Question 1")
 	print("The proportion of polysemous words per Wikipedia page is " + str(round(total_ambiguous_words / len(pages), 2)) + " per page.")
@@ -97,7 +98,9 @@ def main():
 		print(f'{found_words_numbers[key]} words showed {key} senses\n')
 
 	print('Question 5')
-
+	# Only used to get the words
+	# for i in range(len(random_ambiguous_list)):
+	# 	print(f'Word:\n{random_ambiguous_list[i][0]}\nContext:\n{random_ambiguous_list[i][1]}\n')
 
 
 main()

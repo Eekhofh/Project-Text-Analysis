@@ -37,7 +37,7 @@ def main():
 	
 	
 	cm = nltk.ConfusionMatrix(annotator1, annotator2)
-		
+
 	print("Cohen's kappa score: " + str(cohen_kappa_score(annotator1, annotator2)))
 	print()
 	print(cm)

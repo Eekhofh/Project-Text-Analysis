@@ -61,11 +61,19 @@ def get_nature_words():
 	nature_words = [token for token, pos in nltk.pos_tag(nltk.word_tokenize(" ".join(natural_place_hyponyms))) if pos.startswith('N')]
 	return nature_words
 
+def get_entertainment():
+	# Book/Film titles always start with capital letters.
+	# Though not always: Born to run. But: Mission Impossible
+	# How to check if title is book or film AND assign the tags to ALL words?
+	return None
+
+
 def name_entities(persons, organizations, nature_words, tokenized_text):
 	organization = wn.synsets('organization')[0]
 	animal = wn.synsets('animal')[0]
 	sport = wn.synsets('sport')[0]
-	
+
+
 	with open('named_text.txt', 'w') as outfile:
 		
 		for sentence in tokenized_text:

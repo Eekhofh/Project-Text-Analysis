@@ -38,7 +38,7 @@ def add_tags(tagged_words, path):
 
 
 def main():
-	root_path = 'data/LouisAnnotations/group15'
+	root_path = 'rawData/group15'
 	for dir in os.listdir(root_path):
 		for pdir in os.listdir(f'{root_path}/{dir}'):
 			path = f'{root_path}/{dir}/{pdir}'
