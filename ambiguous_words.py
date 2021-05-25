@@ -97,10 +97,26 @@ def main():
 	for key in (found_words_numbers):
 		print(f'{found_words_numbers[key]} words showed {key} senses\n')
 
-	print('Question 5')
+	print("Question 5")
 	# Only used to get the words
 	# for i in range(len(random_ambiguous_list)):
 	# 	print(f'Word:\n{random_ambiguous_list[i][0]}\nContext:\n{random_ambiguous_list[i][1]}\n')
 
+	print("Question 6")
+	print("It has occured once that a word has been assigned a different sense, which is \'game\'.")
+	print("It has probably been assigned the sense for the word \'mobile\', which it has taken from the context.")
+	print("With more context, I believe the algorithm would have found the right sense, because it could have recognized the words ")
+	print("\'release\', \'update\' and \'online\', which all have to do with gaming and not so much with gaming equipment.")
+
+	print("Question 7")
+	print("No, I would have thought the algorithm would be more accurate. In my opinion, the context clues should be enough to correctly show the right sense.")
+	print("For words like \'Recon\', it's understandable, since it's part of a title. But for example, the word \'games\' could be correct, given ")
+	print("the context, which contains the word \'developed\'. On the other hand, it could have been confused by the word \'outside\', where ")
+	print("the outcome could have come from, since hunting is outside.")
+
+	print("Question 8")
+	print("Look at more of the context. This will take more time for the program to run, but will yield far more accurate results. We have not tested this, ")
+	print("but given the context of some words, plus the additional context which would have been a lot clearer and maybe more helpful to the algorithm, ")
+	print("my prediction is that more context is equal to higher accuracy, but also to more time needed.")
 
 main()
