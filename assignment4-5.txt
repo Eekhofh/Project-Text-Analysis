@@ -1,0 +1,57 @@
+Word:
+games: the flesh of wild animals that is used for food
+Context:
+Infinity Ward have also developed two games outside of the Modern Warfare sub-series, Ghosts (2013) and Infinite Warfare (2016).
+
+Incorrect: since games refers to videogames and not to flesh. Most likely it did not see that the sentence is about a game, since the context is not known in WordNet.
+This may be why it did not see that it has to do with videogames and not with hunting. If it did recognize the titles like 'Call of Duty' it would have seen that it has to do with the game.
+
+
+Word:
+may: thorny Eurasian shrub of small tree having dense clusters of white to scarlet flowers followed by deep red berries; established as an escape in eastern North America
+Context:
+In standard adult matches, a player who has been substituted may not take further part in a match.
+
+Incorrect: The word is verb here, but is seen as a noun by Wordnet. This is why it went wrong.
+
+
+Word:
+in: a unit of length equal to one twelfth of a foot
+Context:
+Since Activision had lost the publishing rights to Call of Duty and several other franchises in China due to a legal dispute on most of the gaming consoles (Xbox 360, PlayStation 3, and Wii), it had been rumored that it would be Microsoft Windows-exclusive, since PC gamers accounts for the dominant share of gamers in mainland China.
+
+Incorrect: The word is not a Noun, this is why the definition is incorrect.
+
+Word:
+Force: a putout of a base runner who is required to run; the putout is accomplished by holding the ball while touching the base to which the runner must advance before the runner reaches that base
+Context:
+=== Mobile titles ===
+
+
+==== Call of Duty: Modern Warfare 2: Force Recon ====
+Call of Duty: Modern Warfare 2: Force Recon is the J2ME mobile game for Modern Warfare 2.
+
+Incorrect:
+The word is part of the title and WordNet does not recognize the title.
+
+Word:
+considerations: a fee charged in advance to retain the services of someone
+Context:
+G. H. Hardy in A Mathematician's Apology expressed the belief that these aesthetic considerations are, in themselves, sufficient to justify the study of pure mathematics.
+
+Incorrect: With this I am not sure why it has chosen considerations as a fee.
+
+Word:
+game: the game equipment needed in order to play a particular game
+Context:
+Activision has announced that this game will have a mobile version sometime in the future.
+
+Correct: it most likely has seen the word 'mobile'. This may be why it has chosen for the actual word itself.
+
+Word:
+area: the extent of a 2-dimensional surface enclosed within a boundary
+Context:
+Another area of study is the size of sets, which is described with the cardinal numbers.
+
+Incorrect: It could have chosen for area as in surface, because of the words like: 'Area of' and 'size of'. Which could have been interpreted as length and width.
+
